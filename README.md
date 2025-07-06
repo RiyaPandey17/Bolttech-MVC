@@ -20,7 +20,7 @@ As a customer, I want to create a booking for a car.
 
 **Requisites:**
 - A user can have only one booking for the same dates.
-- NOTE: considered that overlapping booking not allowed since wasn't clear if to and from date booking were mentioned or overlapping ones(different dates)
+- NOTE: Overlapping bookings are not allowed, as it was unclear whether overlapping dates were permitted.
 - The driving license must be valid through the entire booking period.
 
 ---
@@ -43,6 +43,86 @@ As a customer, I want to create a booking for a car.
 
 ---
 
+## Codebase Structure
+
+### Backend
+The backend is organized into the following directories:
+- **`src/domain`**: Contains domain entities and repositories.
+- **`src/application`**: Contains use cases and business logic.
+- **`src/infrastructure`**: Contains database configurations, migrations, and external services.
+- **`src/middleware`**: Contains middleware for validation and error handling.
+- **`src/controllers`**: Contains API controllers for handling requests.
+
+### Frontend
+The frontend is organized into the following directories:
+- **`src/components`**: Contains reusable React components.
+- **`src/pages`**: Contains Next.js pages for routing.
+- **`src/styles`**: Contains Tailwind CSS configurations and global styles.
+- **`src/context`**: Contains Context API for state management.
+
+---
+
+## How to Run
+
+### Prerequisites
+- Node.js (v16 or higher)
+- PostgreSQL (or any compatible database)
+- Docker (optional for deployment)
+
+### Backend Setup
+1. Navigate to the `backend` directory:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up the `.env` file:
+   ```env
+   DB_CLIENT=pg
+   DB_HOST=127.0.0.1
+   DB_PORT=5432
+   DB_NAME=bolttech_mvp
+   DB_USER=your_db_user
+   DB_PASSWORD=your_db_password
+   JWT_SECRET=your_jwt_secret
+   PORT=4000
+   ```
+4. Run database migrations and seeds:
+   ```bash
+   npm run migrate
+   npm run seed
+   ```
+5. Start the backend server:
+   ```bash
+   npm run dev
+   ```
+
+### Frontend Setup
+1. Navigate to the `frontend` directory:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up the `.env` file:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:4000
+   ```
+4. Start the frontend development server:
+   ```bash
+   npm run dev
+   ```
+
+### Accessing the Application
+- The backend API will be available at `http://localhost:4000`.
+- The frontend will be available at `http://localhost:3000`.
+
+---
+
 ## Future Improvements
 
 1. **Frontend Enhancements**:
@@ -51,7 +131,7 @@ As a customer, I want to create a booking for a car.
    - Add loading indicators for actions like checking car availability or creating bookings.
    - Replace Context API with Redux or Zustand for better scalability as the application grows.
    - Make use of Cookies for authentication.
-   - Booking Details need to show according to user timezone.
+   - Booking details should display according to the user's timezone.
 
 2. **Backend Enhancements**:
    - Add more comprehensive tests for all use cases.
@@ -91,4 +171,3 @@ As a customer, I want to create a booking for a car.
 ## License
 
 This project is classified as **C2 - General Business**.
-
