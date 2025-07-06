@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { api } from '@/lib/axios';
 import { jwtDecode } from 'jwt-decode';
 import '@/styles/BookingsPage.css';
+import dotenv from 'dotenv';
+dotenv.config();
 
 interface Booking { id: string; carId: string; brand: string; model: string; dateFrom: string; dateTo: string; totalPrice: number; }
 interface AvailableCar { carId: string; brand: string; model: string; totalPrice: number; averageDailyPrice: number; stock: number; available: number; }

@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
 import { api } from '../lib/axios';  // fix: use named import if you exported it as `export const api = axios.create()`
+import dotenv from 'dotenv';
+dotenv.config();
 
 interface User {
   id: string;

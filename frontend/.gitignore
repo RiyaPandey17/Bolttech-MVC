@@ -24,3 +24,7 @@ yarn-error.log*
 
 # lock files (ignore if you DON'T want to commit them)
 package-lock.json
+
+.next
+
+out

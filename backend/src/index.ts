@@ -3,6 +3,8 @@ import cors from 'cors';
 import authRouter from './infrastructure/api/routes/auth';
 import bookingRouter from './infrastructure/api/routes/bookings';
 import availabilityRouter from './infrastructure/api/routes/availability';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 

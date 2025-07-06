@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { api } from '@/lib/axios';
 import Link from 'next/link';
 import './../styles/HomePage.css';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 interface User {

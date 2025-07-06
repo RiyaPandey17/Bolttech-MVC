@@ -76,8 +76,10 @@ const UserContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externa
 });
 const UserProvider = ({ children })=>{
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null);
+    const API_URL = process.env.API_URL || 'http://localhost:4000';
+    ;
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["api"].get('http://localhost:4000/api/auth/me').then((res)=>{
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["api"].get(`${API_URL}/api/auth/me`).then((res)=>{
             if (res.data?.id) {
                 setUser(res.data);
             } else {
