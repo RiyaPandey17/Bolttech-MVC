@@ -42,106 +42,21 @@ As a customer, I want to create a booking for a car.
 
 ---
 
-## Weaknesses Identified
-
-### Backend
-1. **Error Handling**:
-   - Error handling is inconsistent across controllers. Some controllers use generic error messages, while others provide detailed feedback.
-   - A centralized error-handling middleware is missing.
-
-2. **Environment Variables**:
-   - Sensitive values like `JWT_SECRET` are hardcoded in some places, which poses a security risk.
-
-3. **Rate Limiting**:
-   - The backend lacks rate limiting, which is essential for preventing abuse of API endpoints.
-
-4. **Caching**:
-   - Frequently accessed data, such as car availability, is not cached, which could lead to performance bottlenecks.
-
-### Frontend
-1. **Loading States**:
-   - The frontend lacks proper loading indicators for actions like checking car availability.
-
-2. **State Management**:
-   - While Context API is sufficient for the current scope, it may become cumbersome as the application grows. A more scalable solution like Redux or Zustand should be considered.
-
----
-
-## Improvements
-
-### Backend
-1. **Centralized Error Handling**:
-   - Add a middleware to handle errors consistently across the backend.
-   - Example:
-     ```typescript
-     import { Request, Response, NextFunction } from 'express';
-
-     export const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
-       console.error(err.stack);
-       const statusCode = err.status || 500;
-       res.status(statusCode).json({
-         error: {
-           message: err.message || 'Internal Server Error',
-         },
-       });
-     };
-     ```
-
-2. **Environment Variables**:
-   - Replace hardcoded values like `JWT_SECRET` with `process.env.JWT_SECRET` for better security.
-
-3. **Rate Limiting**:
-   - Use a library like `express-rate-limit` to prevent abuse of API endpoints.
-   - Example:
-     ```typescript
-     import rateLimit from 'express-rate-limit';
-
-     const limiter = rateLimit({
-       windowMs: 15 * 60 * 1000, // 15 minutes
-       max: 100, // Limit each IP to 100 requests per windowMs
-     });
-
-     app.use(limiter);
-     ```
-
-4. **Caching**:
-   - Implement caching for car availability using Redis or Node.js in-memory cache.
-
-### Frontend
-1. **Loading States**:
-   - Add loading indicators for actions like checking car availability or creating bookings.
-   - Example:
-     ```typescript
-     const [loading, setLoading] = useState(false);
-
-     const fetchAvailability = async () => {
-       setLoading(true);
-       try {
-         const response = await fetch('/api/availability');
-         const data = await response.json();
-         setCars(data);
-       } catch (error) {
-         console.error('Error fetching availability:', error);
-       } finally {
-         setLoading(false);
-       }
-     };
-     ```
-
-2. **State Management**:
-   - Replace Context API with Redux or Zustand for better scalability as the application grows.
-
----
-
 ## Future Improvements
 
 1. **Frontend Enhancements**:
    - Add a Navbar component for better navigation.
    - Improve error handling and loading states with visual feedback.
+   - Add loading indicators for actions like checking car availability or creating bookings.
+   - Replace Context API with Redux or Zustand for better scalability as the application grows.
 
 2. **Backend Enhancements**:
    - Add more comprehensive tests for all use cases.
    - Optimize database queries for better performance.
+   - Implement centralized error handling middleware for consistent error responses.
+   - Replace hardcoded values like `JWT_SECRET` with environment variables for better security.
+   - Implement rate limiting to prevent abuse of API endpoints.
+   - Add caching for frequently accessed data, such as car availability, to improve performance.
 
 3. **Deployment**:
    - Dockerize the application for easier deployment.
