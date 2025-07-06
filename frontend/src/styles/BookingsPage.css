@@ -1,0 +1,91 @@
+/* src/styles/BookingsPage.css */
+
+.page-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eef2f7, #dbeafe, #e0e7ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #5b7aa6;
+    font-family: system-ui, sans-serif;
+    padding: 2rem 1rem;
+  }
+  
+  .header {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .app-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #938fdd;
+  }
+  
+  .main-content {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .section {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .section h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #827ae4;
+  }
+  
+  .list-item {
+    background: rgba(255,255,255,0.6);
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .primary-button, .secondary-button {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-weight: 500;
+    transition: transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .primary-button {
+    background: linear-gradient(to right, #8788e3, #ab91e7);
+  }
+  
+  .secondary-button {
+    background: #9ca3af;
+  }
+  
+  .primary-button:hover, .secondary-button:hover {
+    transform: scale(1.05);
+  }
+  
+  input[type="date"] {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+  }
+  
+  .error {
+    color: #dc2626;
+    margin-top: 0.5rem;
+  }
+  

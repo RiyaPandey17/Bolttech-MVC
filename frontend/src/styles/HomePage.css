@@ -1,0 +1,89 @@
+/* HomePage.css */
+
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    padding: 1rem;
+  }
+  
+  .content-box {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4a4e69;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tagline {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #6c757d;
+  }
+  
+  .welcome-message {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    font-weight: 600;
+    color: #4a4e69;
+  }
+  
+  .primary-button, .secondary-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .primary-button {
+    background: linear-gradient(to right, #9e7fbf, #6096f3);
+    box-shadow: 0 4px 12px rgba(51, 126, 224, 0.4);
+  }
+  
+  .secondary-button {
+    background: linear-gradient(to right, #e89989, #ef83b4);
+    box-shadow: 0 4px 12px rgba(232, 122, 100, 0.4);
+  }
+  
+  .primary-button:hover, .secondary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+  
+  .loading-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    color: #333;
+    font-size: 1.2rem;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
