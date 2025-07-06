@@ -1,6 +1,11 @@
 import { CarRepository } from "../../domain/repositories/CarRepository";
 import { BookingRepository } from "../../domain/repositories/BookingRepository";
 import { Car } from "../../domain/entities/Car";
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Example usage of environment variables
+const JWT_SECRET = process.env.JWT_SECRET || 'default_secret'; // Fallback for development
 
 function getSeason(date: Date): 'peak' | 'mid' | 'off' {
   const year = date.getFullYear();
@@ -33,6 +38,11 @@ export class CheckCarAvailability {
     stock: number;
     available: number;
   }[]> {
+    // Validate date range
+    if (dateTo <= dateFrom) {
+      throw new Error('Invalid date range: dateTo must be after dateFrom.');
+    }
+
     // 🟩 1. Check if user already has booking for these dates
     const userBookings = await this.bookingRepo.getBookingsForUser(userId, dateFrom, dateTo);
     if (userBookings.length > 0) {
