@@ -50,14 +50,17 @@ As a customer, I want to create a booking for a car.
    - Improve error handling and loading states with visual feedback.
    - Add loading indicators for actions like checking car availability or creating bookings.
    - Replace Context API with Redux or Zustand for better scalability as the application grows.
+   - Make use of Cookies for authentication.
+   - Booking Details need to show according to user timezone.
 
 2. **Backend Enhancements**:
    - Add more comprehensive tests for all use cases.
    - Optimize database queries for better performance.
    - Implement centralized error handling middleware for consistent error responses.
-   - Replace hardcoded values like `JWT_SECRET` with environment variables for better security.
+   - Replace hardcoded values with environment variables for better security.
    - Implement rate limiting to prevent abuse of API endpoints.
    - Add caching for frequently accessed data, such as car availability, to improve performance.
+   - Add roles and authentication verification for APIs for security.
 
 3. **Deployment**:
    - Dockerize the application for easier deployment.

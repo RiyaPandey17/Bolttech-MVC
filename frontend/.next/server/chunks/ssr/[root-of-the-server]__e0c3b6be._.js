@@ -47,7 +47,6 @@ function BookingsPage() {
     const [userId, setUserId] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null);
     const today = new Date().toISOString().split('T')[0];
     const API_URL = process.env.API_URL || 'http://localhost:4000';
-    ;
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
         const token = localStorage.getItem('token');
         if (!token) {
@@ -108,7 +107,7 @@ function BookingsPage() {
                 licenseNumber: 'DL-123456',
                 licenseValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString()
             });
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["api"].get('${API_URL}/api/bookings', {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["api"].get(`${API_URL}/api/bookings`, {
                 params: {
                     userId
                 }

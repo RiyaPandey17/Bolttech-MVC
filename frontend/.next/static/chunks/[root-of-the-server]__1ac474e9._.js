@@ -520,7 +520,6 @@ function BookingsPage() {
     const [userId, setUserId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const today = new Date().toISOString().split('T')[0];
     const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].env.API_URL || 'http://localhost:4000';
-    ;
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "BookingsPage.useEffect": ()=>{
             const token = localStorage.getItem('token');
@@ -591,7 +590,7 @@ function BookingsPage() {
                 licenseNumber: 'DL-123456',
                 licenseValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString()
             });
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].get('${API_URL}/api/bookings', {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].get(`${API_URL}/api/bookings`, {
                 params: {
                     userId
                 }

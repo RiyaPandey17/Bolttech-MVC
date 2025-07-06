@@ -6,7 +6,7 @@ const API_URL = process.env.API_URL || 'http://localhost:4000';;
 
 // Register new user
 export async function register(name: string, email: string, password: string,licenseNumber: string, licenseValidUntil: string ) {
-  const res = await api.post(`${API_URL}/auth/register`,  { name, email, password, licenseNumber, licenseValidUntil });
+  const res = await api.post(`${API_URL}/api/auth/register`,  { name, email, password, licenseNumber, licenseValidUntil });
   localStorage.setItem('token', res.data.token);
   return res.data; // typically returns { user: {...} }
 }

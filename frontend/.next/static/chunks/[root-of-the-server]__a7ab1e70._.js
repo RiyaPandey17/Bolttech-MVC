@@ -504,7 +504,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dotenv$2f$li
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dotenv$2f$lib$2f$main$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].config();
 const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].env.API_URL || 'http://localhost:4000';
 async function register(name, email, password, licenseNumber, licenseValidUntil) {
-    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/auth/register`, {
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/api/auth/register`, {
         name,
         email,
         password,

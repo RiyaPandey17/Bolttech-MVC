@@ -21,7 +21,7 @@ export default function BookingsPage() {
   const [userId, setUserId] = useState<string | null>(null);
 
   const today = new Date().toISOString().split('T')[0];
-  const API_URL = process.env.API_URL || 'http://localhost:4000';;
+  const API_URL = process.env.API_URL || 'http://localhost:4000';
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) { window.location.href = '/login'; return; }
@@ -62,7 +62,7 @@ export default function BookingsPage() {
         licenseNumber: 'DL-123456',
         licenseValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString()
       });
-      const res = await api.get('${API_URL}/api/bookings', { params: { userId } });
+      const res = await api.get(`${API_URL}/api/bookings`, { params: { userId } });
       setBookings(res.data);
       alert('Booking successful!');
     } catch (err: any) { setError(err.response?.data?.message || 'Failed to create booking'); }

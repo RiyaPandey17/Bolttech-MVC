@@ -496,11 +496,15 @@ __turbopack_context__.s({
     "logout": (()=>logout),
     "register": (()=>register)
 });
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/axios.ts [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dotenv$2f$lib$2f$main$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/dotenv/lib/main.js [client] (ecmascript)");
 ;
-const API_URL = 'http://localhost:4000/api';
+;
+__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dotenv$2f$lib$2f$main$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].config();
+const API_URL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].env.API_URL || 'http://localhost:4000';
 async function register(name, email, password, licenseNumber, licenseValidUntil) {
-    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/auth/register`, {
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/api/auth/register`, {
         name,
         email,
         password,
@@ -511,7 +515,7 @@ async function register(name, email, password, licenseNumber, licenseValidUntil)
     return res.data; // typically returns { user: {...} }
 }
 async function login(email, password) {
-    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/auth/login`, {
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/api/auth/login`, {
         email,
         password
     });
@@ -524,7 +528,7 @@ function logout() {
     localStorage.removeItem('token');
 }
 async function getCurrentUser() {
-    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].get('http://localhost:4000/api/auth/me');
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].get(`${API_URL}/api/auth/me`);
     return res.data;
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {

@@ -54,7 +54,7 @@ var __turbopack_async_dependencies__ = __turbopack_handle_async_dependencies__([
 __TURBOPACK__imported__module__$5b$externals$5d2f$dotenv__$5b$external$5d$__$28$dotenv$2c$__cjs$29$__["default"].config();
 const API_URL = process.env.API_URL || 'http://localhost:4000';
 async function register(name, email, password, licenseNumber, licenseValidUntil) {
-    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/auth/register`, {
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$axios$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["api"].post(`${API_URL}/api/auth/register`, {
         name,
         email,
         password,
