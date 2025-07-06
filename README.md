@@ -20,6 +20,7 @@ As a customer, I want to create a booking for a car.
 
 **Requisites:**
 - A user can have only one booking for the same dates.
+- NOTE: considered that overlapping booking not allowed since wasn't clear if to and from date booking were mentioned or overlapping ones(different dates)
 - The driving license must be valid through the entire booking period.
 
 ---
