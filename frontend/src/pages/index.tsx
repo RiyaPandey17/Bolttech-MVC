@@ -13,11 +13,11 @@ interface User {
 export default function HomePage() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-
+  const API_URL = process.env.API_URL || 'http://localhost:4000';
   useEffect(() => {
     async function fetchUser() {
       try {
-        const res = await api.get('http://localhost:4000/api/auth/me');
+        const res = await api.get(`${API_URL}/api/auth/me`);
         if (res.data?.id) {
           setUser(res.data);
         } else {

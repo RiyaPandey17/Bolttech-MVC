@@ -19,9 +19,9 @@ export const UserContext = createContext<UserContextType>({
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-
+  const API_URL = process.env.API_URL || 'http://localhost:4000';;
   useEffect(() => {
-    api.get('http://localhost:4000/api/auth/me')
+    api.get(`${API_URL}/api/auth/me`)
       .then(res => {
         if (res.data?.id) {
           setUser(res.data);

@@ -3,13 +3,13 @@ import path from 'path';
 
 const config: { [key: string]: Knex.Config } = {
   development: {
-    client: 'pg',
+    client: process.env.DB_CLIENT || 'pg',
     connection: {
-      host: '127.0.0.1',
-      port: 5432,
-      database: 'bolttech_mvp',
-      user: 'riyapandey',  // adjust if different
-      password: ''
+      host: process.env.DB_HOST || '127.0.0.1',
+      port: +(process.env.DB_PORT || 5432),
+      database: process.env.DB_NAME || 'bolttech_mvp',
+      user: process.env.DB_USER || 'riyapandey',
+      password: process.env.DB_PASSWORD || ''
     },
     migrations: {
       directory: path.resolve(__dirname, '../infrastructure/db/migrations'),  // ✅ correct absolute path

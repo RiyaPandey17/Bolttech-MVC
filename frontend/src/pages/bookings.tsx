@@ -19,7 +19,7 @@ export default function BookingsPage() {
   const [userId, setUserId] = useState<string | null>(null);
 
   const today = new Date().toISOString().split('T')[0];
-
+  const API_URL = process.env.API_URL || 'http://localhost:4000';;
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) { window.location.href = '/login'; return; }
@@ -31,7 +31,7 @@ export default function BookingsPage() {
 
   useEffect(() => {
     if (!checked || !userId) return;
-    api.get('http://localhost:4000/api/bookings', { params: { userId } })
+    api.get(`${API_URL}/api/bookings`, { params: { userId } })
       .then(res => setBookings(res.data))
       .catch(() => setError('Failed to load bookings'))
       .finally(() => setLoading(false));
@@ -44,7 +44,7 @@ export default function BookingsPage() {
     if (endDate < startDate) return setError('End date cannot be before start date.');
     setFetchingCars(true); setAvailableCars([]);
     try {
-      const res = await api.get('http://localhost:4000/api/availability', {
+      const res = await api.get(`${API_URL}/api/availability`, {
         params: { dateFrom: startDate, dateTo: endDate, userId }
       });
       setAvailableCars(res.data);
@@ -55,12 +55,12 @@ export default function BookingsPage() {
 
   async function handleBookCar(carId: string) {
     try {
-      await api.post('http://localhost:4000/api/bookings', {
+      await api.post(`${API_URL}/api/bookings`, {
         userId, carId, dateFrom: startDate, dateTo: endDate,
         licenseNumber: 'DL-123456',
         licenseValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString()
       });
-      const res = await api.get('http://localhost:4000/api/bookings', { params: { userId } });
+      const res = await api.get('${API_URL}/api/bookings', { params: { userId } });
       setBookings(res.data);
       alert('Booking successful!');
     } catch (err: any) { setError(err.response?.data?.message || 'Failed to create booking'); }
