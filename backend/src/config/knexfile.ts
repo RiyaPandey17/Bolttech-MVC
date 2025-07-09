@@ -20,7 +20,7 @@ const config: { [key: string]: Knex.Config } = {
       port: +(requireEnv('DB_PORT')), 
       database: requireEnv('DB_NAME'), 
       user: requireEnv('DB_USER'), 
-      password: '', 
+      password: requireEnv('DB_PASSWORD'), 
     },
     migrations: {
       directory: path.resolve(__dirname, '../infrastructure/db/migrations'), 
