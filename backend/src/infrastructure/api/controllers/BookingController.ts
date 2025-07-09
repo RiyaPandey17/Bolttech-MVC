@@ -5,10 +5,9 @@ import { KnexBookingRepository } from '../../repositories/KnexBookingRepository'
 export class BookingController {
   constructor(
     private createBookingUseCase: CreateBooking,
-    private bookingRepo = new KnexBookingRepository()  // default init here
+    private bookingRepo = new KnexBookingRepository()
   ) {}
 
-  // POST /api/bookings
   createBooking = async (req: Request, res: Response): Promise<void> => {
     const { userId, carId, dateFrom, dateTo } = req.body;
     try {
@@ -20,27 +19,26 @@ export class BookingController {
       });
       res.status(201).json({ message: 'Booking created successfully' });
     } catch (err: any) {
-      console.error(err);
-      res.status(400).json({ message: err.message || 'Failed to create booking' });
+      console.error('Error creating booking:', err.message || err);
+      res.status(400).json({ message: err.message || 'Failed to create booking. Please try again later.' });
     }
   }
 
-// GET /api/bookings
-getAllBookings = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const userId = req.query.userId as string;
+  getAllBookings = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const userId = req.query.userId as string;
 
-    if (!userId) {
-      res.status(400).json({ message: 'Missing userId in query params' });
-      return;
+      if (!userId) {
+        res.status(400).json({ message: 'Missing userId in query parameters' });
+        return;
+      }
+
+      const bookings = await this.bookingRepo.findAll(userId);
+      res.json(bookings);
+    } catch (err) {
+      console.error('Error fetching bookings:', err);
+      res.status(500).json({ message: 'An error occurred while fetching bookings. Please try again later.' });
     }
-
-    const bookings = await this.bookingRepo.findAll(userId);
-    res.json(bookings);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Failed to fetch bookings' });
   }
-}
 }
 

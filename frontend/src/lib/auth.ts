@@ -2,7 +2,7 @@ import { api } from './axios';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const API_URL = process.env.API_URL || 'http://localhost:4000';;
+const API_URL = process.env.API_URL || 'http://localhost:4000';
 
 // Register new user
 export async function register(name: string, email: string, password: string,licenseNumber: string, licenseValidUntil: string ) {

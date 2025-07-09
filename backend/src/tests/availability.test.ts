@@ -1,6 +1,6 @@
-import { CheckCarAvailability } from '../src/application/usecases/CheckCarAvailability';
-import { Car } from '../src/domain/entities/Car';
-import { Booking } from '../src/domain/entities/Bookings';
+import { CheckCarAvailability } from '../application/usecases/CheckCarAvailability';
+import { Car } from '../domain/entities/Car';
+import { Booking } from '../domain/entities/Bookings';
 
 describe('CheckCarAvailability UseCase', () => {
   const testUserId = '11111111-1111-1111-1111-111111111111';
@@ -14,7 +14,7 @@ describe('CheckCarAvailability UseCase', () => {
   beforeEach(() => {
     bookingRepo = {
       getBookingsForUser: jest.fn().mockResolvedValue([]),
-      getBookingsForCar: jest.fn().mockResolvedValue([])
+      getBookingsForCar: jest.fn().mockResolvedValue([]),
     };
 
     carRepo = {
@@ -27,8 +27,8 @@ describe('CheckCarAvailability UseCase', () => {
           100, // peak season
           80,  // mid season
           60   // off season
-        )
-      ])
+        ),
+      ]),
     };
   });
 
@@ -50,7 +50,7 @@ describe('CheckCarAvailability UseCase', () => {
   });
 
   it('should return empty list if user already has booking during dates', async () => {
-    // mock user already has booking
+    // Mock user already has booking
     bookingRepo.getBookingsForUser.mockResolvedValue([
       new Booking(
         'existing-booking-id',
@@ -59,7 +59,7 @@ describe('CheckCarAvailability UseCase', () => {
         new Date('2025-07-10'),
         new Date('2025-07-11'),
         200
-      )
+      ),
     ]);
 
     const useCase = new CheckCarAvailability(carRepo, bookingRepo);
@@ -70,9 +70,13 @@ describe('CheckCarAvailability UseCase', () => {
   });
 
   it('should return empty list if car is fully booked during dates', async () => {
-    // mock car fully booked
+    // Mock car fully booked with realistic Booking instances
     bookingRepo.getBookingsForCar.mockResolvedValue([
-      {}, {}, {}, {}, {} // same as car stock=5
+      new Booking('id1', testUserId, testCarId, dateFrom, dateTo, 200),
+      new Booking('id2', testUserId, testCarId, dateFrom, dateTo, 200),
+      new Booking('id3', testUserId, testCarId, dateFrom, dateTo, 200),
+      new Booking('id4', testUserId, testCarId, dateFrom, dateTo, 200),
+      new Booking('id5', testUserId, testCarId, dateFrom, dateTo, 200), // Matches car stock
     ]);
 
     const useCase = new CheckCarAvailability(carRepo, bookingRepo);
@@ -83,7 +87,7 @@ describe('CheckCarAvailability UseCase', () => {
   });
 
   it('should correctly calculate price over multiple days and seasons', async () => {
-    // create a car with different prices
+    // Create a car with different prices
     carRepo.getAllCars.mockResolvedValue([
       new Car(
         testCarId,
@@ -93,7 +97,7 @@ describe('CheckCarAvailability UseCase', () => {
         100, // peak
         80,  // mid
         60   // off
-      )
+      ),
     ]);
 
     const useCase = new CheckCarAvailability(carRepo, bookingRepo);

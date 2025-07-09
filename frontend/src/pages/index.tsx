@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import { api } from '@/lib/axios';
 import Link from 'next/link';
 import './../styles/HomePage.css';
-import dotenv from 'dotenv';
-dotenv.config();
-
 
 interface User {
   id: string;
@@ -15,7 +12,8 @@ interface User {
 export default function HomePage() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const API_URL = process.env.API_URL || 'http://localhost:4000';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
   useEffect(() => {
     async function fetchUser() {
       try {

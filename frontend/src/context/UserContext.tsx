@@ -1,7 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import { api } from '../lib/axios';  // fix: use named import if you exported it as `export const api = axios.create()`
-import dotenv from 'dotenv';
-dotenv.config();
+import { api } from '../lib/axios';
 
 interface User {
   id: string;
@@ -21,7 +19,8 @@ export const UserContext = createContext<UserContextType>({
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const API_URL = process.env.API_URL || 'http://localhost:4000';;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
   useEffect(() => {
     api.get(`${API_URL}/api/auth/me`)
       .then(res => {

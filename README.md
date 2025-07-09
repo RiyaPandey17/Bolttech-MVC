@@ -110,7 +110,7 @@ The frontend is organized into the following directories:
    ```
 3. Set up the `.env` file:
    ```env
-   API_URL=http://localhost:4000
+   NEXT_PUBLIC_API_URL=http://localhost:4000
    ```
 4. Start the frontend development server:
    ```bash

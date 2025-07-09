@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { api } from '@/lib/axios';
 import { jwtDecode } from 'jwt-decode';
 import '@/styles/BookingsPage.css';
-import dotenv from 'dotenv';
-dotenv.config();
 
 interface Booking { id: string; carId: string; brand: string; model: string; dateFrom: string; dateTo: string; totalPrice: number; }
 interface AvailableCar { carId: string; brand: string; model: string; totalPrice: number; averageDailyPrice: number; stock: number; available: number; }
@@ -21,7 +19,8 @@ export default function BookingsPage() {
   const [userId, setUserId] = useState<string | null>(null);
 
   const today = new Date().toISOString().split('T')[0];
-  const API_URL = process.env.API_URL || 'http://localhost:4000';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) { window.location.href = '/login'; return; }

@@ -1,6 +1,5 @@
-// tests/usecases/createBooking.test.ts
-import { CreateBooking } from '../src/application/usecases/CreateBooking';
-import { Booking } from '../src/domain/entities/Bookings';
+import { CreateBooking } from '../application/usecases/CreateBooking';
+import { Booking } from '../domain/entities/Bookings';
 
 describe('CreateBooking UseCase', () => {
   const testUserId = '11111111-1111-1111-1111-111111111111';
@@ -11,6 +10,14 @@ describe('CreateBooking UseCase', () => {
   let bookingRepo: any;
   let userRepo: any;
   let carRepo: any;
+  
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {}); 
+  });
+  
+  afterAll(() => {
+    (console.error as jest.Mock).mockRestore();
+  });
 
   beforeEach(() => {
     // Create fresh mocks before each test
